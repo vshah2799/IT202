@@ -39,7 +39,7 @@ $mail = $_GET["mail"]; print "<br>The mail is: $mail";
 
 if (!authenitcate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
-    header ("refresh: 6 ; url=DatabaseInsertUpdate.php");
+    header ("refresh: 6 ; url=Form.php");
     exit();
 }
 else {
