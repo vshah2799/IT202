@@ -1,19 +1,14 @@
-<?php
-
+<?PHP
 include("Account.php");
 
 $db = mysqli_connect($hostname, $username, $password, $project);
-
 if (mysqli_connect_errno())
 {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();
 }
-
 print "Successfully connected to MySQL.<br><br><br>";
-
 mysqli_select_db( $db, $project );
-
 
 function authenitcate ($ucid, $password, $db)
 {
@@ -37,7 +32,7 @@ $account = $_GET["account"]; print "<br>The account is: $account";
 $amount = $_GET["amount"]; print "<br>The amount is: $amount";
 $mail = $_GET["mail"]; print "<br>The mail is: $mail";
 
-if (!authenitcate($ucid, $password, $db)){
+/*if (!authenitcate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
     header ("refresh: 6 ; url=Form.php");
     exit();
@@ -47,11 +42,7 @@ else {
     header ("refresh: 6 ; url=Next.php");
     exit();
 };
-
-print("BYE");
-
-
-
+*/
 
 
 
@@ -69,4 +60,17 @@ $k =
 print "<br>SQL update: $k";
 mysqli_query($db, $k) or die(mysqli_error($db));
 */
+
+$p = "SELECT *
+      FROM TRANSACTIONS
+      WHERE ucid = '$ucid' and account = '$account' 
+      ";
+($t = mysqli_query($db, $p) )or die(mysqli_error($db));
+while($r = mysqli_fetch_array($t, MYSQLI_ASSOC)){
+    $amount = $r['amount'];
+    $timestamp = $r['timestamp'];
+    echo "<br>amount: $amount  timestamp: $timestamp";
+}
+
+
 
