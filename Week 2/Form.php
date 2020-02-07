@@ -2,7 +2,7 @@
 
 Hello<br><br>
 
-<form action="Test.php"  >
+<form action="DatabaseInsertUpdate.php"  >
 
     <input type=text name="ucid">	Enter ucid				 <br>
     <input type=text name="account">Enter account			 <br><br>
