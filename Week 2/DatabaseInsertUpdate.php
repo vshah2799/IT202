@@ -30,12 +30,19 @@ function authenitcate ($ucid, $password, $db)
     }
 }
 
+function safe($data){
+    global $db;
+    $temp = $_GET[$data];
+    $temp = mysqli_real_escape_string($db, $temp);
+    print "<br>The $data is: $temp";
+    return $temp;
+}
 //Takes data from Form.php and places it in variables
-$ucid = $_GET["ucid"]; print "<br>The ucid is: $ucid"; $ucid = mysqli_real_escape_string($db, $ucid);
-$password = $_GET["password"]; print "<br>The password is: $password";  $password = mysqli_real_escape_string($db, $password);
-$account = $_GET["account"]; print "<br>The account is: $account"; $account = mysqli_real_escape_string($db, $account);
-$amount = $_GET["amount"]; print "<br>The amount is: $amount"; $amount = mysqli_real_escape_string($db, $amount);
-$mail = $_GET["mail"]; print "<br>The mail is: $mail"; $mail = mysqli_real_escape_string($db, $mail);
+$ucid = safe("ucid");
+$password = safe("password");
+$account = safe("account");
+$amount = safe("amount");
+$mail = safe("mail");
 //
 
 
