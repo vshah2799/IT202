@@ -1,7 +1,8 @@
 
 <?PHP
 include("Account.php");
-
+session_start();
+//CONNECTS TO DATABASE
 $db = mysqli_connect($hostname, $username, $password, $project);
 if (mysqli_connect_errno())
 {
@@ -10,6 +11,8 @@ if (mysqli_connect_errno())
 }
 print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
+//
+
 
 function authenitcate ($ucid, $password, $db)
 {
@@ -27,23 +30,28 @@ function authenitcate ($ucid, $password, $db)
     }
 }
 
+//Takes data from Form.php and places it in variables
 $ucid = $_GET["ucid"]; print "<br>The ucid is: $ucid";
 $password = $_GET["password"]; print "<br>The password is: $password";
 $account = $_GET["account"]; print "<br>The account is: $account";
 $amount = $_GET["amount"]; print "<br>The amount is: $amount";
 $mail = $_GET["mail"]; print "<br>The mail is: $mail";
+//
 
-/*if (!authenitcate($ucid, $password, $db)){
+
+if (!authenitcate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
     header ("refresh: 6 ; url=Form.php");
     exit();
 }
 else {
     echo "<br>Valid credentials.";
+    $_SESSION ["logged"] = true;
+    $_SESSION ["ucid"] = $ucid;
     header ("refresh: 6 ; url=Next.php");
     exit();
-};
-*/
+}
+
 
 
 
@@ -51,7 +59,6 @@ else {
 $s = "INSERT INTO TRANSACTIONS VALUES('$ucid', '$account', '$amount', NOW(), '$mail')";
 print "<br>SQL insert: $s";
 mysqli_query($db, $s) or die(mysqli_error($db));
-
 $k =
     "UPDATE ACCOUNTS
      SET balance = balance + '$amount', recent = NOW()
