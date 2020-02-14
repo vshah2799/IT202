@@ -45,7 +45,6 @@ $amount = safe("amount");
 $mail = safe("mail");
 //
 
-
 if (!authenitcate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
     header ("refresh: 6 ; url=Form.php");
