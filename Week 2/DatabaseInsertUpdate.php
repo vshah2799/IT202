@@ -31,11 +31,11 @@ function authenitcate ($ucid, $password, $db)
 }
 
 //Takes data from Form.php and places it in variables
-$ucid = $_GET["ucid"]; print "<br>The ucid is: $ucid";
-$password = $_GET["password"]; print "<br>The password is: $password";
-$account = $_GET["account"]; print "<br>The account is: $account";
-$amount = $_GET["amount"]; print "<br>The amount is: $amount";
-$mail = $_GET["mail"]; print "<br>The mail is: $mail";
+$ucid = $_GET["ucid"]; print "<br>The ucid is: $ucid"; $ucid = mysqli_real_escape_string($db, $ucid);
+$password = $_GET["password"]; print "<br>The password is: $password";  $password = mysqli_real_escape_string($db, $password);
+$account = $_GET["account"]; print "<br>The account is: $account"; $account = mysqli_real_escape_string($db, $account);
+$amount = $_GET["amount"]; print "<br>The amount is: $amount"; $amount = mysqli_real_escape_string($db, $amount);
+$mail = $_GET["mail"]; print "<br>The mail is: $mail"; $mail = mysqli_real_escape_string($db, $mail);
 //
 
 
