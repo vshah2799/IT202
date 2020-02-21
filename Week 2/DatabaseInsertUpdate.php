@@ -104,8 +104,7 @@ function test($ucid, $db){
             echo "<br>amount: $amount  timestamp: $timestamp account: $account";
        }
     }
-
-
+    
 }
 
 //
