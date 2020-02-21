@@ -12,7 +12,7 @@ print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 //
 
-function authenitcate ($ucid, $password, $db)
+function authenticate ($ucid, $password, $db)
 {
     $p = "SELECT ucid, pass
       FROM USERS
@@ -43,7 +43,7 @@ $amount = safe("amount");
 $mail = safe("mail");
 //
 
-if (!authenitcate($ucid, $password, $db)){
+if (!authenticate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
     header ("refresh: 6 ; url=Form.php");
     exit();
@@ -74,7 +74,7 @@ print "<br>SQL update: $k";
 mysqli_query($db, $k) or die(mysqli_error($db));
 */
 
-//
+
 function outputTransactionsAndAccountInfoToScreen($ucid, $db){
 
     $m = "SELECT *
@@ -107,7 +107,6 @@ function outputTransactionsAndAccountInfoToScreen($ucid, $db){
        }
     }
 }
-
 //
 
 /*General code for retrieving rows from database and printing out how many rows there in the query
