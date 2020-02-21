@@ -78,11 +78,6 @@ mysqli_query($db, $k) or die(mysqli_error($db));
 
 //
 function test($ucid, $db){
-    $p = "SELECT *
-      FROM TRANSACTIONS
-      WHERE ucid = '$ucid'
-      ";
-    ($t = mysqli_query($db, $p) )or die(mysqli_error($db));
 
     $m = "SELECT *
       FROM ACCOUNTS
@@ -93,8 +88,15 @@ function test($ucid, $db){
     while($j = mysqli_fetch_array($b, MYSQLI_ASSOC)){
        $account = $j['account'];
        $balance = $j['balance'];
-       $recent = $j['recent'];
+       $recent =  $j['recent'];
        echo "<br>account: $account  balance: $balance recent: $recent";
+
+        $p = "SELECT *
+        FROM TRANSACTIONS
+        WHERE ucid = '$ucid' and account=$account;
+        ";
+        ($t = mysqli_query($db, $p) )or die(mysqli_error($db));
+
        while($r = mysqli_fetch_array($t, MYSQLI_ASSOC)){
             $amount = $r['amount'];
             $timestamp = $r['timestamp'];
@@ -102,7 +104,6 @@ function test($ucid, $db){
             echo "<br>amount: $amount  timestamp: $timestamp account: $account";
        }
     }
-
 
 
 }
