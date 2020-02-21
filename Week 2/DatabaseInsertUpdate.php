@@ -1,4 +1,3 @@
-
 <?PHP
 include("Account.php");
 session_start();
@@ -12,7 +11,6 @@ if (mysqli_connect_errno())
 print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 //
-
 
 function authenitcate ($ucid, $password, $db)
 {
@@ -55,7 +53,7 @@ else {
     $_SESSION ["logged"] = true;
     $_SESSION ["ucid"] = $ucid;
     //header ("refresh: 6 ; url=Next.php");
-    test($ucid, $db);
+    outputTransactionsAndAccountInfoToScreen($ucid, $db);
     exit();
 }
 
@@ -77,7 +75,7 @@ mysqli_query($db, $k) or die(mysqli_error($db));
 */
 
 //
-function test($ucid, $db){
+function outputTransactionsAndAccountInfoToScreen($ucid, $db){
 
     $m = "SELECT *
       FROM ACCOUNTS
@@ -89,7 +87,9 @@ function test($ucid, $db){
        $account = $j['account'];
        $balance = $j['balance'];
        $recent =  $j['recent'];
-       echo "<br>account: $account  balance: $balance recent: $recent";
+       $ucid = $j['ucid'];
+       print("<hr></hr>")
+;      print ("<b>$ucid $account  Balance: \$$balance Most Recent: $recent</b>");
 
         $p = "SELECT *
         FROM TRANSACTIONS
@@ -101,10 +101,11 @@ function test($ucid, $db){
             $amount = $r['amount'];
             $timestamp = $r['timestamp'];
             $account = $r['account'];
-            echo "<br>amount: $amount  timestamp: $timestamp account: $account";
+            $mail = $r['mail'];
+           print("<br></br>");
+           print("<i>Amount:\$$amount Timestamp: $timestamp Mail copy:$mail</i>");
        }
     }
-    
 }
 
 //
