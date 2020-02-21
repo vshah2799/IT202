@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //Check if the logged entry of $_SESSION is undefined
 if (!isset($_SESSION['logged'])){
     print("LOGIN PLEASE");
