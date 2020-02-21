@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+</html>
+
+<style>
+    #number, #account, #ucid, #ucid, #test{
+        display: none;
+    }
+</style>
+
+
+
+<form action = "">
+<select name="choice" id="choice">
+
+    <option value=""> Choose </option>
+    <option value="List"> List </option>
+    <option value="Perform"> Perform </option>
+    <option value="Clear"> Clear </option>
+</select>
+
+
+
+<div id = "number"><input type="text" name="number">  Enter number<br><br></div>
+
+    <div id ="account"> <input type="text" name="account" >  Enter Account<br><br></div>
+    <div id = "ucid" >  <input type="text" name="ucid"    >  Enter ucid<br><br></div>
+    <div id ="test">    <input type="text" name="test"    >  Enter test<br></div>
+<input type = submit>
+
+</form>
+
+<script>
+    var ptrChoice = document.getElementById("choice")
+    ptrChoice.addEventListener("change", F)
+    var ptrNumber = document.getElementById("number")
+    var ptrAmount = document.getElementById("account")
+    var ptrUcid = document.getElementById("ucid")
+    var ptrTest = document.getElementById("test")
+    function F(){
+        ptrNumber.style.display = "none"
+        ptrAmount.style.display = "none"
+        ptrUcid.style.display = "none"
+        ptrTest.style.display = "none"
+
+        if (ptrChoice.value == "List" ){
+            ptrNumber.style.display = "block"
+        }
+        if (ptrChoice.value == "Perform" ){
+            ptrAmount.style.display = "block"
+        }
+        if (ptrChoice.value == "Clear" ){
+            ptrUcid.style.display = "block"
+        }
+        if (ptrChoice.value == "List" ){
+            ptrTest.style.display = "block"
+        }
+
+    }
+
+</script>

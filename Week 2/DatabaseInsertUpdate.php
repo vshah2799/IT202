@@ -35,6 +35,7 @@ function safe($data){
     print "<br>The $data is: $temp";
     return $temp;
 }
+
 //Takes data from Form.php and places it in variables
 $ucid = safe("ucid");
 $password = safe("password");
@@ -57,9 +58,6 @@ else {
     exit();
 }
 
-
-
-
 /*
 $s = "INSERT INTO TRANSACTIONS VALUES('$ucid', '$account', '$amount', NOW(), '$mail')";
 print "<br>SQL insert: $s";
@@ -73,7 +71,6 @@ $k =
 print "<br>SQL update: $k";
 mysqli_query($db, $k) or die(mysqli_error($db));
 */
-
 
 function outputTransactionsAndAccountInfoToScreen($ucid, $db){
 
@@ -107,7 +104,7 @@ function outputTransactionsAndAccountInfoToScreen($ucid, $db){
        }
     }
 }
-//
+
 
 /*General code for retrieving rows from database and printing out how many rows there in the query
 $s = "select * from TRANSACTIONS";
