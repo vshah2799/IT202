@@ -20,13 +20,13 @@ function authenitcate ($ucid, $password, $db)
       FROM USERS
       WHERE ucid = '$ucid' and pass = '$password' 
       ";
-
     ($t = mysqli_query($db, $p) )or die(mysqli_error($db));
     $numRows = mysqli_num_rows($t);
     if ($numRows == 0){
         return false;
     }
-    else{ return true;
+    else{
+        return true;
     }
 }
 
@@ -54,7 +54,8 @@ else {
     echo "<br>Valid credentials.";
     $_SESSION ["logged"] = true;
     $_SESSION ["ucid"] = $ucid;
-    header ("refresh: 6 ; url=Next.php");
+    //header ("refresh: 6 ; url=Next.php");
+    test($ucid, $db);
     exit();
 }
 
@@ -75,16 +76,43 @@ print "<br>SQL update: $k";
 mysqli_query($db, $k) or die(mysqli_error($db));
 */
 
-$p = "SELECT *
-      FROM TRANSACTIONS
-      WHERE ucid = '$ucid' and account = '$account' 
+//
+function test($ucid, $db){
+
+    $m = "SELECT *
+      FROM ACCOUNTS
+      WHERE ucid = '$ucid'
       ";
-($t = mysqli_query($db, $p) )or die(mysqli_error($db));
-while($r = mysqli_fetch_array($t, MYSQLI_ASSOC)){
-    $amount = $r['amount'];
-    $timestamp = $r['timestamp'];
-    echo "<br>amount: $amount  timestamp: $timestamp";
+    ($b = mysqli_query($db, $m) )or die(mysqli_error($db));
+
+    while($j = mysqli_fetch_array($b, MYSQLI_ASSOC)){
+       $account = $j['account'];
+       $balance = $j['balance'];
+       $recent =  $j['recent'];
+       echo "<br>account: $account  balance: $balance recent: $recent";
+
+        $p = "SELECT *
+        FROM TRANSACTIONS
+        WHERE ucid = '$ucid' and account=$account;
+        ";
+        ($t = mysqli_query($db, $p) )or die(mysqli_error($db));
+
+       while($r = mysqli_fetch_array($t, MYSQLI_ASSOC)){
+            $amount = $r['amount'];
+            $timestamp = $r['timestamp'];
+            $account = $r['account'];
+            echo "<br>amount: $amount  timestamp: $timestamp account: $account";
+       }
+    }
+    
 }
+
+//
+
+$s = "select * from TRANSACTIONS";
+($t = mysqli_query ($db, $s)) or die (mysqli_error ($db));
+$num = mysqli_num_rows ($t);
+echo "Retrieved $num rows. <br>";
 
 
 
