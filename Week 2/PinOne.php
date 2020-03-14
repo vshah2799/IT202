@@ -1,10 +1,19 @@
 <?php
+include("Account.php");
 session_start();
+$db = mysqli_connect($hostname, $username, $password, $project);
+if (mysqli_connect_errno())
+{
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+}
+print "Successfully connected to MySQL.<br><br><br>";
+mysqli_select_db( $db, $project );
 
 //Check if the logged entry of $_SESSION is undefined
 if (!isset($_SESSION['logged'])){
     print("LOGIN PLEASE");
-    header ("refresh: 3 ; url=Form.php");
+    header ("refresh: 2 ; url=Form.php");
     exit();
 }
 //Testing script code that you shouldn't see unless they have the right credentials
@@ -12,18 +21,16 @@ print("HELLO");
 
 //Pin handling code
 //Make pin, mail the pin, remember the pin, supply pin form
-
 $pin = mt_rand(1000, 9999);
-print("<br>$pin");//ONLY FOR TESTING
+print("The pin is <br>$pin");//ONLY FOR TESTING
 $_SESSION ["pin"] = $pin;
 $msg = $pin;
 $subj = "Enter pin in form";
 $to = "vs598@g.njit.edu" ;
 mail ($to, $subj, $msg );
-
 ?>
 
-<form action = "Pin.php">
+<form action = "PinTwo.php">
     <input type = text name = "pin" > Enter pin<br>
     <input type = submit>
 </form>

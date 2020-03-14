@@ -1,5 +1,6 @@
 <?PHP
 include("Account.php");
+include("myFunctions.php");
 session_start();
 //CONNECTS TO DATABASE
 $db = mysqli_connect($hostname, $username, $password, $project);
@@ -12,51 +13,32 @@ print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 //
 
-function authenticate ($ucid, $password, $db)
-{
-    $p = "SELECT ucid, pass
-      FROM USERS
-      WHERE ucid = '$ucid' and pass = '$password' 
-      ";
-    ($t = mysqli_query($db, $p) )or die(mysqli_error($db));
-    $numRows = mysqli_num_rows($t);
-    if ($numRows == 0){
-        return false;
-    }
-    else{
-        return true;
-    }
-}
-
-function safe($data){
-    global $db;
-    $temp = $_GET[$data];
-    $temp = mysqli_real_escape_string($db, $temp);
-    print "<br>The $data is: $temp";
-    return $temp;
-}
 
 //Takes data from Form.php and places it in variables
 $ucid = safe("ucid");
 $password = safe("password");
-$account = safe("account");
-$amount = safe("amount");
-$mail = safe("mail");
 //
 
 if (!authenticate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
-    header ("refresh: 6 ; url=Form.php");
+    header ("refresh: 2 ; url=Form.php");
     exit();
 }
 else {
     echo "<br>Valid credentials.";
     $_SESSION ["logged"] = true;
     $_SESSION ["ucid"] = $ucid;
-    //header ("refresh: 6 ; url=Next.php");
+    header ("refresh: 2 ; url=PinOne.php");
     outputTransactionsAndAccountInfoToScreen($ucid, $db);
     exit();
 }
+
+
+
+
+
+
+
 
 /*
 $s = "INSERT INTO TRANSACTIONS VALUES('$ucid', '$account', '$amount', NOW(), '$mail')";
