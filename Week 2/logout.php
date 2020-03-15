@@ -10,3 +10,4 @@ setcookie("PHPSESSID", "", time()-3600); ;
 
 echo "Your session is terminated.";
 
+header ("refresh: 2 ; url=Form.php");

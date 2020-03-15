@@ -14,7 +14,7 @@ mysqli_select_db( $db, $project );
 //Check if user is authorized to enter page
 if (!isset($_SESSION['pinCheckSession'])){
     print("You do not have the credentials to access this page");
-    header ("refresh: 3 ; url=ServiceOne.php");
+    header ("refresh: 2 ; url=ServiceOne.php");
     exit();
 }
 if (safe('choice')=='List'){
@@ -34,6 +34,10 @@ elseif (safe('choice')=='Clear'){
     clear($ucidForFunction, $accountForFunction, $db);
 }
 else{
-    header ("refresh: 1 ; url=ServiceOne.php");
+    header ("refresh: 2 ; url=ServiceOne.php");
 }
+?>
 
+<!DOCTYPE html>
+<a href = "logout.php" > Logout </a>
+</html>

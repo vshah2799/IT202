@@ -14,7 +14,7 @@ mysqli_select_db( $db, $project );
 //Check if the logged entry of $_SESSION and/or pin is undefined
 if (!isset($_SESSION['logged']) && !isset($_SESSION['pin'])){
     print("LOGIN OR START PIN PROCEDURE PLEASE");
-    header ("refresh: 3 ; url=PinOne.php");
+    header ("refresh: 2 ; url=PinOne.php");
     exit();
 }
 

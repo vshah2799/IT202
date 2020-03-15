@@ -14,7 +14,7 @@ mysqli_select_db( $db, $project );
 //Check if the logged entry of $_SESSION and/or pin is undefined
 if (!isset($_SESSION['pinCheckSession'])) {
     print("You do not have the credentials to access this page");
-    header("refresh: 3 ; url=PinOne.php");
+    header("refresh: 2 ; url=PinOne.php");
     exit();
 }
 ?>
@@ -27,17 +27,16 @@ if (!isset($_SESSION['pinCheckSession'])) {
 
 <form action = "ServiceTwo.php">
     <select name="choice" id="choice">
-
-        <option value=""> Choose </option>
-        <option value="List"> List </option>
+        <option value="">        Choose </option>
+        <option value="List">    List </option>
         <option value="Perform"> Perform </option>
-        <option value="Clear"> Clear </option>
+        <option value="Clear">   Clear </option>
     </select>
 
-    <div id = "number"><input type="text" name="number">  Enter number<br><br></div>
-    <div id ="account"> <input type="text" name="account" >  Enter Account<br><br></div>
-    <div id = "ucid" >  <input type="text" name="ucid"    >  Enter ucid<br><br></div>
-    <div id = "amount">    <input type="text" name="amount"    >  Enter amount<br></div>
+    <div id = "number" > <input type="text" name="number"  autocomplete="off">  Enter number<br><br></div>
+    <div id = "account"> <input type="text" name="account" autocomplete="off">  Enter Account<br><br></div>
+    <div id = "ucid"   > <input type="text" name="ucid"    autocomplete="off">  Enter ucid<br><br></div>
+    <div id = "amount" > <input type="text" name="amount"  autocomplete="off" > Enter amount<br></div>
     <input type = submit>
 </form>
 

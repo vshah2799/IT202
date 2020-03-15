@@ -34,28 +34,3 @@ else {
 }
 
 
-
-
-
-/*
-$s = "INSERT INTO TRANSACTIONS VALUES('$ucid', '$account', '$amount', NOW(), '$mail')";
-print "<br>SQL insert: $s";
-mysqli_query($db, $s) or die(mysqli_error($db));
-$k =
-    "UPDATE ACCOUNTS
-     SET balance = balance + '$amount', recent = NOW()
-     WHERE  ucid = '$ucid' and account = '$account'
-    ";
-
-print "<br>SQL update: $k";
-mysqli_query($db, $k) or die(mysqli_error($db));
-*/
-
-/*General code for retrieving rows from database and printing out how many rows there in the query
-$s = "select * from TRANSACTIONS";
-($t = mysqli_query ($db, $s)) or die (mysqli_error ($db));
-$num = mysqli_num_rows ($t);
-echo "Retrieved $num rows. <br>";
-*/
-
-
