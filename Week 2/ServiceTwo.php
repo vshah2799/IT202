@@ -26,7 +26,9 @@ elseif (safe('choice')=='Perform'){
     perform();
 }
 elseif (safe('choice')=='Clear'){
-    clear();
+    $ucidForFunction = $_SESSION['ucid'];
+    $accountForFunction = safe('account');
+    clear($ucidForFunction, $accountForFunction, $db);
 }
 else{
     header ("refresh: 1 ; url=ServiceOne.php");

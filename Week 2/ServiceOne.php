@@ -20,7 +20,7 @@ if (!isset($_SESSION['pinCheckSession'])) {
 ?>
 
 <style>
-    #number, #account, #ucid, #ucid, #test{
+    #number, #account, #ucid, #ucid, #amount{
         display: none;
     }
 </style>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['pinCheckSession'])) {
     <div id = "number"><input type="text" name="number">  Enter number<br><br></div>
     <div id ="account"> <input type="text" name="account" >  Enter Account<br><br></div>
     <div id = "ucid" >  <input type="text" name="ucid"    >  Enter ucid<br><br></div>
-    <div id ="test">    <input type="text" name="test"    >  Enter test<br></div>
+    <div id = "amount">    <input type="text" name="amount"    >  Enter amount<br></div>
     <input type = submit>
 </form>
 
@@ -45,23 +45,25 @@ if (!isset($_SESSION['pinCheckSession'])) {
     var ptrChoice = document.getElementById("choice")
     ptrChoice.addEventListener("change", F)
     var ptrNumber = document.getElementById("number")
-    var ptrAmount = document.getElementById("account")
+    var ptrAmount = document.getElementById("amount")
     var ptrUcid = document.getElementById("ucid")
-    var ptrTest = document.getElementById("test")
+    var ptrAccount = document.getElementById("account")
     function F(){
         ptrNumber.style.display = "none"
         ptrAmount.style.display = "none"
         ptrUcid.style.display = "none"
-        ptrTest.style.display = "none"
+        ptrAccount.style.display = "none"
 
         if (ptrChoice.value == "List" ){
             ptrNumber.style.display = "block"
         }
-        else if (ptrChoice.value == "Perform" ){
+        if (ptrChoice.value == "Perform" ){
+            ptrAccount.style.display = "block"
             ptrAmount.style.display = "block"
         }
-        else if (ptrChoice.value == "Clear" ){
-            ptrUcid.style.display = "block"
+        if (ptrChoice.value == "Clear" ){
+            ptrAccount.style.display = "block"
+
         }
     }
 </script>

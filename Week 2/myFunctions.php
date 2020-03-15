@@ -55,11 +55,17 @@ function listData($ucid, $number, $db){
     }
 }
 
-function perform(){
+function clear($ucid, $account, $db){
+    $m = " DELETE FROM TRANSACTIONS WHERE account = '$account' AND ucid = '$ucid'";
+    ($b = mysqli_query($db, $m) )or die(mysqli_error($db));
 
+    $p = "UPDATE ACCOUNTS
+          SET balance = '0', recent = '0000-01-01 00:00:01'
+          WHERE ucid = '$ucid' AND account = '$account'";
+    ($b = mysqli_query($db, $p) )or die(mysqli_error($db));
 }
 
-function clear(){
+function perform(){
 
 }
 

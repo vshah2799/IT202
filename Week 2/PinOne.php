@@ -16,8 +16,6 @@ if (!isset($_SESSION['logged'])){
     header ("refresh: 2 ; url=Form.php");
     exit();
 }
-//Testing script code that you shouldn't see unless they have the right credentials
-print("HELLO");
 
 //Pin handling code
 //Make pin, mail the pin, remember the pin, supply pin form

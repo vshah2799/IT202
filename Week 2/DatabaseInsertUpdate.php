@@ -37,9 +37,6 @@ else {
 
 
 
-
-
-
 /*
 $s = "INSERT INTO TRANSACTIONS VALUES('$ucid', '$account', '$amount', NOW(), '$mail')";
 print "<br>SQL insert: $s";
@@ -53,40 +50,6 @@ $k =
 print "<br>SQL update: $k";
 mysqli_query($db, $k) or die(mysqli_error($db));
 */
-
-function outputTransactionsAndAccountInfoToScreen($ucid, $db){
-
-    $m = "SELECT *
-      FROM ACCOUNTS
-      WHERE ucid = '$ucid'
-      ";
-    ($b = mysqli_query($db, $m) )or die(mysqli_error($db));
-
-    while($j = mysqli_fetch_array($b, MYSQLI_ASSOC)){
-       $account = $j['account'];
-       $balance = $j['balance'];
-       $recent =  $j['recent'];
-       $ucid = $j['ucid'];
-       print("<hr></hr>")
-;      print ("<b>$ucid $account  Balance: \$$balance Most Recent: $recent</b>");
-
-        $p = "SELECT *
-        FROM TRANSACTIONS
-        WHERE ucid = '$ucid' and account=$account;
-        ";
-        ($t = mysqli_query($db, $p) )or die(mysqli_error($db));
-
-       while($r = mysqli_fetch_array($t, MYSQLI_ASSOC)){
-            $amount = $r['amount'];
-            $timestamp = $r['timestamp'];
-            $account = $r['account'];
-            $mail = $r['mail'];
-           print("<br></br>");
-           print("<i>Amount:\$$amount Timestamp: $timestamp Mail copy:$mail</i>");
-       }
-    }
-}
-
 
 /*General code for retrieving rows from database and printing out how many rows there in the query
 $s = "select * from TRANSACTIONS";
