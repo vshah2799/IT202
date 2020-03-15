@@ -11,11 +11,24 @@ if (mysqli_connect_errno())
 print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 
-//Check if the logged entry of $_SESSION and/or pin is undefined
+//Check if user is authorized to enter page
 if (!isset($_SESSION['pinCheckSession'])){
     print("You do not have the credentials to access this page");
     header ("refresh: 3 ; url=ServiceOne.php");
     exit();
 }
+if (safe('choice')=='List'){
+    $ucidForFunction = $_SESSION['ucid'];
+    $numberForFunction = safe('number');
+    listData($ucidForFunction, $numberForFunction, $db);
+}
+elseif (safe('choice')=='Perform'){
+    perform();
+}
+elseif (safe('choice')=='Clear'){
+    clear();
+}
+else{
+    header ("refresh: 1 ; url=ServiceOne.php");
+}
 
-print($_SESSION['choice']);

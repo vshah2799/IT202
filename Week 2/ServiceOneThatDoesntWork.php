@@ -1,3 +1,7 @@
+////TO GET THE CHOICE (LIST, CLEAR, PERFORM) PUT IN SESSION ARRAY THEN CHECK IT IN SERVICETWO
+////
+////
+////
 <?php
 include("Account.php");
 include("myFunctions.php");
@@ -12,9 +16,9 @@ print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 
 //Check if the logged entry of $_SESSION and/or pin is undefined
-if (!isset($_SESSION['pinCheckSession'])) {
+if (!isset($_SESSION['pinCheckSession'])){
     print("You do not have the credentials to access this page");
-    header("refresh: 3 ; url=PinOne.php");
+    header ("refresh: 3 ; url=PinOne.php");
     exit();
 }
 ?>
@@ -26,42 +30,42 @@ if (!isset($_SESSION['pinCheckSession'])) {
 </style>
 
 <form action = "ServiceTwo.php">
-    <select name="choice" id="choice">
-
-        <option value=""> Choose </option>
-        <option value="List"> List </option>
-        <option value="Perform"> Perform </option>
-        <option value="Clear"> Clear </option>
-    </select>
+    <input type="radio" id="List" name="choice" onclick="F(0);" >
+    <label for="List">List</label><br>
+    <input type="radio" id="Clear" name="choice" onclick="F(1);">
+    <label for="Clear">Clear</label><br>
+    <input type="radio" id="Perform" name="choice" onclick="F(2);">
+    <label for="Perform">Perform</label>
 
     <div id = "number"><input type="text" name="number">  Enter number<br><br></div>
-    <div id ="account"> <input type="text" name="account" >  Enter Account<br><br></div>
+    <div id = "account"> <input type="text" name="account" >  Enter Account<br><br></div>
     <div id = "ucid" >  <input type="text" name="ucid"    >  Enter ucid<br><br></div>
-    <div id ="test">    <input type="text" name="test"    >  Enter test<br></div>
+    <div id = "test">    <input type="text" name="test"    >  Enter test<br></div>
     <input type = submit>
 </form>
 
 <script>
-    var ptrChoice = document.getElementById("choice")
-    ptrChoice.addEventListener("change", F)
+
     var ptrNumber = document.getElementById("number")
     var ptrAmount = document.getElementById("account")
     var ptrUcid = document.getElementById("ucid")
     var ptrTest = document.getElementById("test")
-    function F(){
+
+    function F(x){
         ptrNumber.style.display = "none"
         ptrAmount.style.display = "none"
         ptrUcid.style.display = "none"
         ptrTest.style.display = "none"
 
-        if (ptrChoice.value == "List" ){
+        if (x==0){
             ptrNumber.style.display = "block"
         }
-        else if (ptrChoice.value == "Perform" ){
+        if (x==1){
             ptrAmount.style.display = "block"
         }
-        else if (ptrChoice.value == "Clear" ){
+        if (x==2){
             ptrUcid.style.display = "block"
         }
     }
+
 </script>
