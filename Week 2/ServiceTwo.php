@@ -23,7 +23,10 @@ if (safe('choice')=='List'){
     listData($ucidForFunction, $numberForFunction, $db);
 }
 elseif (safe('choice')=='Perform'){
-    perform();
+    $accountForFunction = safe('account');
+    $amountForFunction = safe('amount');
+    $ucidForFunction = $_SESSION['ucid'];
+    perform($accountForFunction, $amountForFunction, $ucidForFunction, $db);
 }
 elseif (safe('choice')=='Clear'){
     $ucidForFunction = $_SESSION['ucid'];

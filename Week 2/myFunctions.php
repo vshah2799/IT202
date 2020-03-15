@@ -62,10 +62,21 @@ function clear($ucid, $account, $db){
     $p = "UPDATE ACCOUNTS
           SET balance = '0', recent = '0000-01-01 00:00:01'
           WHERE ucid = '$ucid' AND account = '$account'";
-    ($b = mysqli_query($db, $p) )or die(mysqli_error($db));
+    ($b = mysqli_query($db, $p) ) or die(mysqli_error($db));
 }
 
-function perform(){
+function perform($account, $amount, $ucid, $db){
+    $k = "UPDATE ACCOUNTS 
+          SET balance = balance + '$amount', recent = NOW()
+          WHERE ucid = '$ucid' AND account = '$account' AND balance + '$amount' >= '0'";
+    ($b = mysqli_query($db, $k) ) or die(mysqli_error($db));
 
+    if(mysqli_affected_rows($db) == 1){
+        print("SUCCESS");
+    }
+    elseif (mysqli_affected_rows($db) == 0){
+        print("YOU DO NOT HAVE ENOUGH BALANCE");
+        exit();
+    }
 }
 
