@@ -1,6 +1,6 @@
 <?php
 include("Account.php");
-include("myFunctions.php");
+include("MyFunctions.php");
 session_start();
 $db = mysqli_connect($hostname, $username, $password, $project);
 if (mysqli_connect_errno())
@@ -11,7 +11,7 @@ if (mysqli_connect_errno())
 print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 
-//Check if the logged entry of $_SESSION and/or pin is undefined
+//Check if the logged entry of $pinCheckSession is undefined
 if (!isset($_SESSION['pinCheckSession'])) {
     print("You do not have the credentials to access this page");
     header("refresh: 2 ; url=PinOne.php");

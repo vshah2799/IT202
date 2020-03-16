@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<form action="DatabaseInsertUpdate.php"  >
+<form action="Authenticate.php"  >
 
     <input type=text name="ucid" autocomplete="off">	 Enter ucid				  <br>
     <input type=text name="password" autocomplete="off">Enter password           <br><br>

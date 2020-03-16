@@ -27,7 +27,6 @@ $subj = "Enter pin in form";
 $to = "vs598@g.njit.edu" ;
 mail ($to, $subj, $msg );
 ?>
-
 <form action = "PinTwo.php">
     <input type = text name = "pin" autocomplete="off" > Enter pin<br>
     <input type = submit>

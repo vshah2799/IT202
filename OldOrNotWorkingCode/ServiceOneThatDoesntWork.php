@@ -4,7 +4,7 @@
 ////
 <?php
 include("Account.php");
-include("myFunctions.php");
+include("MyFunctions.php");
 session_start();
 $db = mysqli_connect($hostname, $username, $password, $project);
 if (mysqli_connect_errno())
@@ -29,7 +29,7 @@ if (!isset($_SESSION['pinCheckSession'])){
     }
 </style>
 
-<form action = "ServiceTwo.php">
+<form action = "../Week%202/ServiceTwo.php">
     <input type="radio" id="List" name="choice" onclick="F(0);" >
     <label for="List">List</label><br>
     <input type="radio" id="Clear" name="choice" onclick="F(1);">

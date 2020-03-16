@@ -1,6 +1,6 @@
 <?PHP
 include("Account.php");
-include("myFunctions.php");
+include("MyFunctions.php");
 session_start();
 //CONNECTS TO DATABASE
 $db = mysqli_connect($hostname, $username, $password, $project);
@@ -11,13 +11,10 @@ if (mysqli_connect_errno())
 }
 print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
-//
-
 
 //Takes data from Form.php and places it in variables
 $ucid = safe("ucid");
 $password = safe("password");
-//
 
 if (!authenticate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
@@ -29,7 +26,6 @@ else {
     $_SESSION ["logged"] = true;
     $_SESSION ["ucid"] = $ucid;
     header ("refresh: 2 ; url=PinOne.php");
-    outputTransactionsAndAccountInfoToScreen($ucid, $db);
     exit();
 }
 
