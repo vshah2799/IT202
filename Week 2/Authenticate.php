@@ -12,13 +12,13 @@ if (mysqli_connect_errno())
 print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 
-//Takes data from Form.php and places it in variables
+//Takes data from FormMidterm.php and places it in variables
 $ucid = safe("ucid");
 $password = safe("password");
 
 if (!authenticate($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
-    header ("refresh: 2 ; url=Form.php");
+    header ("refresh: 2 ; url=FormMidterm.php");
     exit();
 }
 else {
