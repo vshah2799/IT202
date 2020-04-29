@@ -1,4 +1,29 @@
 <?php
+
+function authenticateNew($ucid, $passoword, $db){
+    $query = "SELECT *
+              FROM USERS
+              WHERE ucid = '$ucid'
+              ";
+    ($queryResult = mysqli_query($db, $query) )or die(mysqli_error($db));
+    $numRows = mysqli_num_rows($queryResult);
+    if ($numRows == 0){
+        print("Wrong ucid");
+        return false;
+    }
+
+    $hashGet = mysqli_fetch_array($queryResult, MYSQLI_ASSOC);
+    $query2 = $hashGet['hash'];
+    if(password_verify($passoword, $query2)){
+        return true;
+    }
+    else{
+        print("Wrong password");
+        return false;
+    }
+}
+
+/* ***Old version of Authenticate Function***
 function authenticate ($ucid, $password, $db)
 {
     $query = "SELECT ucid, pass
@@ -14,7 +39,7 @@ function authenticate ($ucid, $password, $db)
         return true;
     }
 }
-
+*/
 function safe($data){
     global $db;
     $temp = $_GET[$data];

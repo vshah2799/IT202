@@ -16,16 +16,16 @@ mysqli_select_db( $db, $project );
 $ucid = safe("ucid");
 $password = safe("password");
 
-if (!authenticate($ucid, $password, $db)){
+if (!authenticateNew($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
-    header ("refresh: 2 ; url=FormMidterm.php");
+    header ("refresh: 9 ; url=Form.php");
     exit();
 }
 else {
     echo "<br>Valid credentials.";
     $_SESSION ["logged"] = true;
     $_SESSION ["ucid"] = $ucid;
-    header ("refresh: 2 ; url=PinOne.php");
+    header ("refresh: 9 ; url=PinOne.php");
     exit();
 }
 

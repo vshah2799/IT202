@@ -6,4 +6,14 @@
     <input type=submit >
 
 </form>
+<?php
+session_start();
+if (!isset($_SESSION['captchaVerify'])){
+    print("COMPLETE CAPTCHA");
+    header ("refresh: 6 ; url=captchaForm.html");
+    exit();
+}
+?>
+
+
 

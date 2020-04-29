@@ -2,11 +2,13 @@
 session_start();
 
 $guess = $_GET["guess"];
-$ucid = $_GET["ucid"];
 $text = $_SESSION["captcha"];
 
 if($guess == $text){
     print("Correct captcha ");
+    $_SESSION["captchaVerify"] = 'Correct';
+    header("refresh: 3; url=Form.php");
+    exit();
 }
 else{
     print("Wrong captcha. TRY AGAIN");
@@ -14,13 +16,5 @@ else{
     exit();
 }
 
-if($ucid == "bert"){
-    print("The ucid was right");
-}
-else{
-    print("Wrong ucid. TRY AGAIN");
-    header("refresh: 3; url=captchaForm.html");
-    exit();
 
-}
 

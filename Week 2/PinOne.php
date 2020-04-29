@@ -13,7 +13,7 @@ mysqli_select_db( $db, $project );
 //Check if the logged entry of $_SESSION is undefined
 if (!isset($_SESSION['logged'])){
     print("LOGIN PLEASE");
-    header ("refresh: 2 ; url=FormMidterm.php");
+    header ("refresh: 2 ; url=Form.php");
     exit();
 }
 
