@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('config.php');
 
 $font = 'LaBelleAurore.ttf';
 $font2 = 'Xerox Sans Serif Narrow.ttf';

@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('config.php');
 
 $sidvalue = session_id();
 echo "<br>Your session id: " . $sidvalue . "<br>";

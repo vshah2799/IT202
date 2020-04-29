@@ -1,3 +1,11 @@
+<?php
+include('config.php');
+if (!isset($_SESSION['captchaVerify'])) {
+    print("COMPLETE CAPTCHA");
+    header("refresh: 5 ; url=captchaForm.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <form action="Authenticate.php"  >
 
@@ -6,14 +14,7 @@
     <input type=submit >
 
 </form>
-<?php
-session_start();
-if (!isset($_SESSION['captchaVerify'])){
-    print("COMPLETE CAPTCHA");
-    header ("refresh: 6 ; url=captchaForm.html");
-    exit();
-}
-?>
+
 
 
 

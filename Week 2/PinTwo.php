@@ -1,7 +1,7 @@
 <?php
 include("Account.php");
 include("MyFunctions.php");
-session_start();
+include('config.php');
 $db = mysqli_connect($hostname, $username, $password, $project);
 if (mysqli_connect_errno())
 {

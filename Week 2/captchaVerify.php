@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('config.php');
 
 $guess = $_GET["guess"];
 $text = $_SESSION["captcha"];

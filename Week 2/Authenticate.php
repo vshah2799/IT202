@@ -1,7 +1,7 @@
 <?PHP
 include("Account.php");
 include("MyFunctions.php");
-session_start();
+include('config.php');
 //CONNECTS TO DATABASE
 $db = mysqli_connect($hostname, $username, $password, $project);
 if (mysqli_connect_errno())
@@ -12,10 +12,20 @@ if (mysqli_connect_errno())
 print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 
-//Takes data from FormMidterm.php and places it in variables
+$flag = true;
+
+//Takes data from Form.php and places it in variables
 $ucid = safe("ucid");
 $password = safe("password");
 
+if(!$flag){
+    print("Bad input");
+    header ("refresh: 9 ; url=Form.php");
+    exit();
+}
+else{
+    print("The ucid was in the correct format <br> <br>");
+}
 if (!authenticateNew($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
     header ("refresh: 9 ; url=Form.php");

@@ -42,8 +42,17 @@ function authenticate ($ucid, $password, $db)
 */
 function safe($data){
     global $db;
+    global $flag;
     $temp = $_GET[$data];
     $temp = mysqli_real_escape_string($db, $temp);
+
+    if($data == "ucid"){
+        $count = preg_match('/^[a-z]{2,4}[0-9]{0,4}$/i', $temp, $matches);
+        if($count == 0){
+            $flag = false;
+            return "Illegal ucid format";
+        }
+    }
     return $temp;
 }
 
