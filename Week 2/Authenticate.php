@@ -14,20 +14,41 @@ print "Successfully connected to MySQL.<br><br><br>";
 mysqli_select_db( $db, $project );
 
 $flag = true;
-
+$flagAmount = true;
+$flagPassword = true;
 //Takes data from Form.php and places it in variables
 $ucid = safe("ucid");
 $password = safe("password");
+$amount = safe("amount");
 $delay = $_GET["delay"];
 
 if(!$flag){
-    print("Bad input");
-    header ("refresh: 9 ; url=Form.php");
+    print("The UCID not in correct format");
+    header ("refresh: $delay ; url=Form.php");
     exit();
 }
 else{
     print("The ucid was in the correct format <br> <br>");
 }
+
+if(!$flagAmount){
+    print("The amount not in correct format");
+    header ("refresh: $delay ; url=Form.php");
+    exit();
+}
+else{
+    print("The amount was in the correct format <br> <br>");
+}
+
+if(!$flagPassword){
+    print("The password not in correct format");
+    header ("refresh: $delay ; url=Form.php");
+    exit();
+}
+else{
+    print("The password was in the correct format <br> <br>");
+}
+
 if (!authenticateNew($ucid, $password, $db)){
     echo "<br>Invalid credentials.";
     header ("refresh: $delay ; url=Form.php");

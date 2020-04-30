@@ -43,6 +43,8 @@ function authenticate ($ucid, $password, $db)
 function safe($data){
     global $db;
     global $flag;
+    global $flagAmount;
+    global $flagPassword;
     $temp = $_GET[$data];
     $temp = mysqli_real_escape_string($db, $temp);
 
@@ -51,6 +53,20 @@ function safe($data){
         if($count == 0){
             $flag = false;
             return "Illegal ucid format";
+        }
+    }
+    if($data == "amount"){
+        $count = preg_match('/^[$]{1}[0-9]{0,10}[.]{1}[0-9]{1}[0-9]{1}$/i', $temp, $matches);
+        if($count == 0){
+            $flagAmount = false;
+            return "Illegal amount format";
+        }
+    }
+    if($data == "password"){
+        $count = preg_match('/^[a-z, A-Z, ?, *, 0-9]{3,5}$/i', $temp, $matches);
+        if($count == 0){
+            $flagPassword = false;
+            return "Illegal password format";
         }
     }
     return $temp;
