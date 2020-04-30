@@ -38,5 +38,8 @@ else {
     header ("refresh: 9 ; url=PinOne.php");
     exit();
 }
+?>
 
-
+<!DOCTYPE html>
+<a href = "Logout.php" > Logout </a>
+</html>

@@ -15,6 +15,8 @@ if (!isset($_SESSION['captchaVerify'])) {
 
 </form>
 
-
+<!DOCTYPE html>
+<a href = "Logout.php" > Logout </a>
+</html>
 
 
