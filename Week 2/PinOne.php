@@ -31,4 +31,7 @@ mail ($to, $subj, $msg );
     <input type = text name = "pin" autocomplete="off" > Enter pin<br>
     <input type = submit>
 </form>
+<br><br>
+<a href = "Logout.php" > Logout </a>
+
 

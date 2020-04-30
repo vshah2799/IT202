@@ -1,5 +1,6 @@
 <?php
-include('config.php');
+$sessionCook = session_set_cookie_params(0, "/~vs598/download");
+session_start();
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 ini_set('diplasy_errors',1);
