@@ -1,13 +1,18 @@
 <?php
 $sessionCook = session_set_cookie_params(0, "/~vs598/download/");
 session_start();
-/*if (!isset($_SESSION['captchaVerify'])) {
+if (!isset($_SESSION['captchaVerify'])) {
     print("COMPLETE CAPTCHA");
     header("refresh: 5 ; url=captchaForm.html");
     exit();
 }
-*/?>
+?>
 <!DOCTYPE html>
+<br>
+    <br>FOR TESTING, THE UCID AND PASSWORD ARE:</br>
+    <br>UCID: bert</br>
+    <br>Password: 267</br>
+</div>
 <form action="Authenticate.php"  >
 
     <input type=text name="ucid" autocomplete="off">	 Enter ucid				  <br>
