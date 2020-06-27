@@ -15,11 +15,10 @@ if (!isset($_SESSION['captchaVerify'])) {
 </div>
 <form action="Authenticate.php"  >
 
-    <input type=text name="ucid" autocomplete="off">	 Enter ucid				  <br>
-    <input type=text name="password" autocomplete="off">Enter password           <br>
-    <input type=text name="amount" autocomplete="off">Enter amount         <br>
-    <input type="text" size = 10 name="delay" autocomplete=off >
-    What do you want your delay to be?<br>
+    <input type=text name="ucid" autocomplete="off">	        Enter ucid				                       <br>
+    <input type=text name="password" autocomplete="off">        Enter password                                 <br>
+    <input type=text name="amount" autocomplete="off">          Enter amount                                   <br>
+    <input type="text" size = 10 name="delay" autocomplete=off >What do you want your delay to be(in seconds)? <br>
     <input type=submit >
 
 </form>
