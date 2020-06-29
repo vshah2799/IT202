@@ -95,7 +95,7 @@ function listData($ucid, $number, $db){
         $count = 0;
         while(($queryArrayTwo = mysqli_fetch_array($queryResultTwo, MYSQLI_ASSOC))&& $count<$number){
             $amount = $queryArrayTwo['amount'];
-            $timestamp = $queryArrayTwo['timestamp'];
+            $timestamp = $queryArrayTwo['tStamp'];
             $account = $queryArrayTwo['account'];
             $mail = $queryArrayTwo['mail'];
             print("<br></br>");
@@ -108,15 +108,11 @@ function listData($ucid, $number, $db){
 function clear($ucid, $account, $db){
     $query = " DELETE FROM TRANSACTIONS WHERE account = '$account' AND ucid = '$ucid'";
     ($queryResult = mysqli_query($db, $query) )or die(mysqli_error($db));
-
-    $queryTwo = "UPDATE ACCOUNTS
-          SET balance = '0', recent = '0000-01-01 00:00:01'
-          WHERE ucid = '$ucid' AND account = '$account'";
-    ($queryResult = mysqli_query($db, $queryTwo) ) or die(mysqli_error($db));
     print("SUCCESS ");
 }
 
 function perform($account, $amount, $ucid, $db){
+    print($amount);
     $query = "UPDATE ACCOUNTS 
           SET balance = balance + '$amount', recent = NOW()
           WHERE ucid = '$ucid' AND account = '$account' AND balance + '$amount' >= '0'";
@@ -127,6 +123,19 @@ function perform($account, $amount, $ucid, $db){
     }
     elseif (mysqli_affected_rows($db) == 0){
         print("YOU DO NOT HAVE ENOUGH BALANCE ");
+        exit();
+    }
+
+    $query = "INSERT INTO TRANSACTIONS (`ucid`, `account`, `amount`, `tStamp`, `mail`) 
+              VALUES ('$ucid', $account, $amount, NOW(), NULL)";
+
+    ($queryResult = mysqli_query($db, $query) ) or die(mysqli_error($db));
+
+    if(mysqli_affected_rows($db) == 1){
+        print("SUCCESS ");
+    }
+    elseif (mysqli_affected_rows($db) == 0){
+        print("PROBLEM WITH TRANSACTION");
         exit();
     }
 }

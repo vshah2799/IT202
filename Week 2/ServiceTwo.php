@@ -26,7 +26,7 @@ if (safe('choice')=='List'){
 
 elseif (safe('choice')=='Perform'){
     $accountForFunction = safe('account');
-    $amountForFunction = safe('amount');
+    $amountForFunction = safe('amount2');
     $ucidForFunction = $_SESSION['ucid'];
     perform($accountForFunction, $amountForFunction, $ucidForFunction, $db);
 }
