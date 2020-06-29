@@ -11,8 +11,8 @@ if (!isset($_SESSION['captchaVerify'])) {
 <!DOCTYPE html>
 <br>
     <br>FOR TESTING, THE UCID AND PASSWORD ARE:</br>
-    <br>UCID: bert</br>
-    <br>Password: 267</br>
+        <br>UCID: bert<br>
+        Password: 267<br>
 </div>
 <form action="Authenticate.php"  >
 

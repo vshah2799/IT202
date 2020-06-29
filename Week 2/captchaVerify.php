@@ -13,7 +13,7 @@ if($guess == $text){
 }
 else{
     print("Wrong captcha. TRY AGAIN");
-    header("refresh: $delay; url=captchaForm.html");
+    header ("refresh: 1 ; url=Logout.php");
     exit();
 }
 
